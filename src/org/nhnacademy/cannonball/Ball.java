@@ -27,6 +27,7 @@ public class Ball {
     }
 
     public void draw(Graphics graphics) {
+        graphics.setColor(color);
         graphics.fillOval((int) (location.getX() - radius), (int) (location.getY() - radius), (int) (2 * radius), (int) (2 * radius));
     }
 }
