@@ -4,24 +4,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ball {
-    double x;
-    double y;
+    Point location;
     double radius;
     Color color;
 
-    public Ball(double x, double y, double radius, Color color) {
-        this.x = x;
-        this.y = y;
+    public Ball(Point location, double radius, Color color) {
+        this.location = location;
         this.radius = radius;
         this.color = color;
     }
 
     public double getX() {
-        return  x;
+        return  location.getX();
     }
 
     public double getY() {
-        return  y;
+        return  location.getY();
     }
 
     public double getRadius() {
@@ -29,6 +27,6 @@ public class Ball {
     }
 
     public void draw(Graphics graphics) {
-        graphics.fillOval((int) (x - radius), (int) (y - radius), (int) (2 * radius), (int) (2 * radius));
+        graphics.fillOval((int) (location.getX() - radius), (int) (location.getY() - radius), (int) (2 * radius), (int) (2 * radius));
     }
 }
