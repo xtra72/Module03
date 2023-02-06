@@ -14,10 +14,6 @@ public class BoundedBall extends MovableBall {
         this.bounds = bounds;
     }
 
-    public Region getRegion() {
-        return  new Region(location.getX() - radius, location.getY() - radius, 2 * radius, 2 * radius);
-    }
-
     public void turnX() {
         motion.setDX(-motion.getDX());
     }

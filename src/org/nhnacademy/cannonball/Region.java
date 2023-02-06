@@ -10,4 +10,10 @@ public class Region extends Rectangle{
     public boolean isCollision(Region region) {
         return  intersects(region);
     }
+
+    public Region getIntersection(Region region) {
+        Rectangle rect = intersection(region);
+
+        return  new Region(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+    }
 }

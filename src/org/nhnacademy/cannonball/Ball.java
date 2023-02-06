@@ -26,6 +26,10 @@ public class Ball {
         return  radius;
     }
 
+    public Region getRegion() {
+        return  new Region(location.getX() - radius, location.getY() - radius, 2 * radius, 2 * radius);
+    }
+
     public void draw(Graphics graphics) {
         graphics.setColor(color);
         graphics.fillOval((int) (location.getX() - radius), (int) (location.getY() - radius), (int) (2 * radius), (int) (2 * radius));

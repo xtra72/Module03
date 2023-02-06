@@ -28,6 +28,13 @@ public class WalledWorld extends MovableWorld {
                     ((BoundedBall)ball).turnY();
                 }
             }
+
+            balls.stream().filter(x -> x != ball)
+                    .filter(x -> x.getRegion().isCollision(ball.getRegion()))
+                    .forEach(x -> {
+                        ((BoundedBall)ball).turnX();
+                        ((BoundedBall)ball).turnY();
+                    });
         }
     }
 }
