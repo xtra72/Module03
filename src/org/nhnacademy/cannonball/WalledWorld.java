@@ -14,6 +14,7 @@ public class WalledWorld extends MovableWorld {
         bottomWall = new Region(-width, height, 3.0 * width, height);
     }
 
+    @Override
     public void next() {
         super.next();
 
