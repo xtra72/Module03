@@ -3,36 +3,38 @@ package org.nhnacademy.cannonball;
 import java.awt.Color;
 
 public class MovableBall extends Ball {
-    double velocity;
-    double angle;
+    Motion motion;
 
     public MovableBall(Point location, double radius, Color color) {
         super(location, radius, color);
-        velocity = 0;
-        angle = 0;
+        motion = new Motion();
+    }
+
+    public Motion getMotion() {
+        return  motion;
+    }
+
+    public void setMotion(Motion motion) {
+        this.motion = motion;
     }
 
     public double getVelocity() {
-        return  velocity;
+        return  motion.getVelocity();
     }
 
     public void setVelocity(double velocity) {
-        this.velocity = velocity;
+        this.motion.setVelocity(velocity);
     }
 
     public double getAngle() {
-        return  angle;
+        return  motion.getAngle();
     }
 
     public void setAngle(double angle) {
-        this.angle = angle;
+        this.motion.setAngle(angle);
     }
 
     public void next() {
-        double radius = Math.toRadians(angle);
-        double dx = velocity * Math.cos(radius);
-        double dy = velocity * Math.sin(radius);
-
-        location.move(dx, dy);
+        location.move(motion.getDX(), motion.getDY());
     }
 }

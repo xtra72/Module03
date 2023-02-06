@@ -2,6 +2,7 @@ package test;
 
 import java.awt.Color;
 import java.util.Random;
+import org.nhnacademy.cannonball.Motion;
 import org.nhnacademy.cannonball.MovableBall;
 import org.nhnacademy.cannonball.MovableWorld;
 import org.nhnacademy.cannonball.Point;
@@ -17,8 +18,11 @@ public class TestMovableWorld {
             MovableBall ball = new MovableBall(new Point(radius + random.nextInt((int) (world.getWidth() - 2 * radius)),
                     radius + random.nextInt((int) (world.getHeight() - 2 * radius))),
                     radius, Color.BLACK);
-            ball.setVelocity(10 + random.nextInt(40));
-            ball.setAngle(random.nextInt(90));
+            Motion motion = new Motion();
+            motion.setVelocity(10.0 + random.nextInt(40));
+            motion.setAngle(random.nextInt(90));
+
+            ball.setMotion(motion);
             world.add(ball);
         }
 
