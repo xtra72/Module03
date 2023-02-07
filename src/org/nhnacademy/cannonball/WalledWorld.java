@@ -33,7 +33,6 @@ public class WalledWorld extends MovableWorld {
                     .filter(x -> x.getRegion().isCollision(ball.getRegion()))
                     .forEach(x -> {
                         ((BoundedBall)ball).turnX();
-                        ((BoundedBall)ball).turnY();
                     });
         }
     }
