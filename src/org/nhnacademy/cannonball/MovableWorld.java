@@ -1,6 +1,6 @@
 package org.nhnacademy.cannonball;
 
-public class MovableWorld extends World implements Movable {
+public class MovableWorld extends World {
     long interval;
 
     public MovableWorld(int width, int height)  {

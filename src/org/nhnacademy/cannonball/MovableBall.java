@@ -19,12 +19,18 @@ public class MovableBall extends Ball implements Movable {
         this.motion.setVelocity(motion.getVelocity());
     }
 
+
+    public void addMotion(Motion motion) {
+        this.motion.addDX(motion.getDX());
+        this.motion.addDY(motion.getDY());
+    }
+
     public double getVelocity() {
         return  motion.getVelocity();
     }
 
     public void setVelocity(double velocity) {
-        this.motion.setVelocity(velocity);
+        motion.setVelocity(velocity);
     }
 
     public double getAngle() {
@@ -32,7 +38,11 @@ public class MovableBall extends Ball implements Movable {
     }
 
     public void setAngle(double angle) {
-        this.motion.setAngle(angle);
+        motion.setAngle(angle);
+    }
+
+    public void stop() {
+        motion.setVelocity(0);
     }
 
     public void next() {

@@ -2,7 +2,7 @@ package org.nhnacademy.cannonball;
 
 import java.awt.Color;
 
-public class BoundedBox extends MovableBox implements Boundable {
+public class BoundedBox extends MovableBox implements Boundable, Bounceable {
     Region bounds;
 
     public BoundedBox(Point location, double width, double height, Color color) {

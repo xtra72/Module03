@@ -15,7 +15,13 @@ public class MovableBox extends Box implements Movable {
     }
 
     public void setMotion(Motion motion) {
-        this.motion = motion;
+        this.motion.setAngle(motion.getAngle());
+        this.motion.setVelocity(motion.getVelocity());
+    }
+
+    public void addMotion(Motion motion) {
+        this.motion.addAngle(motion.getAngle());
+        this.motion.addVelocity(motion.getVelocity());
     }
 
     public double getVelocity() {
@@ -32,6 +38,10 @@ public class MovableBox extends Box implements Movable {
 
     public void setAngle(double angle) {
         this.motion.setAngle(angle);
+    }
+
+    public void stop() {
+        motion.setVelocity(0);
     }
 
     public void next() {

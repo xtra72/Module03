@@ -13,6 +13,12 @@ public class Motion {
         dy = 0;
     }
 
+    public Motion(double velocity, double angle) {
+        this.velocity = velocity;
+        this.angle = angle;
+        updateDXDY();
+    }
+
     public Motion(Motion motion) {
         velocity = motion.getVelocity();
         angle = motion.getAngle();
