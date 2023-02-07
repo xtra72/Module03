@@ -23,7 +23,9 @@ public class World extends Frame {
         super.paint(graphics);
 
         for(Shape shape : shapes) {
-            shape.draw(graphics);
+            shape.draw(graphics, (location)-> {
+                return  new Point(location.getX(), getHeight() - location.getY());
+            });
         }
     }
 }

@@ -2,6 +2,7 @@ package org.nhnacademy.cannonball;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.function.UnaryOperator;
 
 public class Box extends Shape {
     double width;
@@ -42,5 +43,12 @@ public class Box extends Shape {
     public void draw(Graphics graphics) {
         graphics.setColor(color);
         graphics.fillRect((int) (location.getX() - width / 2), (int) (location.getY() - height / 2), (int) width, (int) height);
+    }
+
+    public void draw(Graphics graphics, UnaryOperator<Point> translate) {
+        Point newLocation = translate.apply(location);
+
+        graphics.setColor(color);
+        graphics.fillRect((int) (newLocation.getX() - width / 2), (int) (newLocation.getY() - height / 2), (int) width, (int) height);
     }
 }

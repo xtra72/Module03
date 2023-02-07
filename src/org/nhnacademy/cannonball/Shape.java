@@ -1,6 +1,7 @@
 package org.nhnacademy.cannonball;
 
 import java.awt.Graphics;
+import java.util.function.UnaryOperator;
 
 abstract class Shape {
     Point location;
@@ -13,4 +14,5 @@ abstract class Shape {
     abstract double getY();
     abstract Region getRegion();
     abstract void draw(Graphics graphics);
+    abstract void draw(Graphics graphics, UnaryOperator<Point>translate);
 }
