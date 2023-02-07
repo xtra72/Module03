@@ -2,7 +2,7 @@ package org.nhnacademy.cannonball;
 
 import java.awt.Color;
 
-public class BoundedBall extends MovableBall {
+public class BoundedBall extends MovableBall implements Boundable {
     Region bounds;
 
     public BoundedBall(Point location, double radius, Color color) {

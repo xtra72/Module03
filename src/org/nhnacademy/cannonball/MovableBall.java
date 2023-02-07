@@ -2,8 +2,8 @@ package org.nhnacademy.cannonball;
 
 import java.awt.Color;
 
-public class MovableBall extends Ball {
-    Motion motion;
+public class MovableBall extends Ball implements Movable {
+    final Motion motion;
 
     public MovableBall(Point location, double radius, Color color) {
         super(location, radius, color);
@@ -15,7 +15,8 @@ public class MovableBall extends Ball {
     }
 
     public void setMotion(Motion motion) {
-        this.motion = motion;
+        this.motion.setAngle(motion.getAngle());
+        this.motion.setVelocity(motion.getVelocity());
     }
 
     public double getVelocity() {

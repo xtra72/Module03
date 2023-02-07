@@ -13,6 +13,13 @@ public class Motion {
         dy = 0;
     }
 
+    public Motion(Motion motion) {
+        velocity = motion.getVelocity();
+        angle = motion.getAngle();
+        dx = motion.getDX();
+        dy = motion.getDY();
+    }
+
     public void add(Motion motion) {
         this.dx += motion.getDX();
         this.dy += motion.getDY();
@@ -83,6 +90,6 @@ public class Motion {
 
     public void updateVelocityAndAngle() {
         velocity = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-        angle = Math.toDegrees(Math.asin(dy / this.velocity));
+        angle = Math.toDegrees(Math.asin(dy / velocity));
     }
 }

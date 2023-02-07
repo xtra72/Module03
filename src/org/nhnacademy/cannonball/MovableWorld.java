@@ -1,6 +1,6 @@
 package org.nhnacademy.cannonball;
 
-public class MovableWorld extends World {
+public class MovableWorld extends World implements Movable {
     long interval;
 
     public MovableWorld(int width, int height)  {
@@ -18,11 +18,8 @@ public class MovableWorld extends World {
 
     public void next() {
         for(Shape shape : shapes) {
-            if (shape instanceof MovableBall) {
-                ((MovableBall)shape).next();
-            }
-            if (shape instanceof MovableBox) {
-                ((MovableBox)shape).next();
+            if (shape instanceof Movable) {
+                ((Movable)shape).next();
             }
         }
     }

@@ -2,7 +2,7 @@ package org.nhnacademy.cannonball;
 
 import java.awt.Color;
 
-public class MovableBox extends Box {
+public class MovableBox extends Box implements Movable {
     Motion motion;
 
     public MovableBox(Point location, double width, double height, Color color) {

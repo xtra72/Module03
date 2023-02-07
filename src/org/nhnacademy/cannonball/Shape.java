@@ -9,6 +9,8 @@ abstract class Shape {
         this.location = location;
     }
 
+    abstract double getX();
+    abstract double getY();
     abstract Region getRegion();
     abstract void draw(Graphics graphics);
 }

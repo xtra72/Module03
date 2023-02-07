@@ -19,33 +19,29 @@ public class WalledWorld extends MovableWorld {
         super.next();
 
         for(Shape shape : shapes) {
-            if(shape instanceof BoundedBall) {
-                if (leftWall.isCollision(((BoundedBall)shape).getRegion()) || rightWall.isCollision(((BoundedBall)shape).getRegion())) {
-                    ((BoundedBall)shape).turnX();
+            if(shape instanceof Boundable) {
+                if (leftWall.isCollision(shape.getRegion()) || rightWall.isCollision(shape.getRegion())) {
+                    ((Boundable)shape).turnX();
                 }
 
-                if (topWall.isCollision(((BoundedBall)shape).getRegion()) || bottomWall.isCollision(((BoundedBall)shape).getRegion())) {
-                    ((BoundedBall)shape).turnY();
-                }
-
-                shapes.stream().filter(x -> x != shape)
-                        .filter(x -> x.getRegion().isCollision(shape.getRegion()))
-                        .forEach(x -> ((BoundedBall) shape).turnX());
-            }
-
-            if (shape instanceof BoundedBox) {
-                if (leftWall.isCollision(((BoundedBox) shape).getRegion())
-                        || rightWall.isCollision(((BoundedBox) shape).getRegion())) {
-                    ((BoundedBox) shape).turnX();
-                }
-
-                if (topWall.isCollision(((BoundedBox)shape).getRegion()) || bottomWall.isCollision(((BoundedBox)shape).getRegion())) {
-                    ((BoundedBox)shape).turnY();
+                if (topWall.isCollision(shape.getRegion()) || bottomWall.isCollision(shape.getRegion())) {
+                    ((Boundable)shape).turnY();
                 }
 
                 shapes.stream().filter(x -> x != shape)
                         .filter(x -> x.getRegion().isCollision(shape.getRegion()))
-                        .forEach(x -> ((BoundedBox) shape).turnX());
+                        .forEach(x -> {
+                            double dx = shape.getX() - x.getX();
+                            double dy = shape.getY() - x.getY();
+
+                            double velocity = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                            int angle = Math.abs((int)Math.toDegrees(Math.asin(dy / velocity))) % 180;
+                            if (angle < 45 || angle > 135) {
+                                ((Boundable) shape).turnX();
+                            } else {
+                                ((Boundable) shape).turnY();
+                            }
+                        });
             }
         }
     }

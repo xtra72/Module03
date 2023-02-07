@@ -5,8 +5,11 @@ public class BoundedWorld extends MovableWorld {
         super(width, height);
     }
 
-    public void add(BoundedBall ball) {
-        ball.setBounds(new Region(0, 0, getWidth(), getHeight()));
-        super.add(ball);
+    public void add(Shape shape) {
+        if (shape instanceof Boundable ) {
+            ((Boundable)shape).setBounds(new Region(0, 0, getWidth(), getHeight()));
+        }
+
+        super.add(shape);
     }
 }
