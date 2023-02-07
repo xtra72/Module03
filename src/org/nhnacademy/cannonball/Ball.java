@@ -3,12 +3,12 @@ package org.nhnacademy.cannonball;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball {
-    Point location;
+public class Ball extends Shape {
     double radius;
     Color color;
 
     public Ball(Point location, double radius, Color color) {
+        super(location);
         this.location = location;
         this.radius = radius;
         this.color = color;

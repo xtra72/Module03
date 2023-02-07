@@ -17,9 +17,12 @@ public class MovableWorld extends World {
     }
 
     public void next() {
-        for(Ball ball : balls) {
-            if (ball instanceof MovableBall) {
-                ((MovableBall)ball).next();
+        for(Shape shape : shapes) {
+            if (shape instanceof MovableBall) {
+                ((MovableBall)shape).next();
+            }
+            if (shape instanceof MovableBox) {
+                ((MovableBox)shape).next();
             }
         }
     }

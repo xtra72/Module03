@@ -14,7 +14,7 @@ public class TestBoundedWorld {
 
         Random random = new Random();
         for(int i = 0 ; i < 10 ; i++) {
-            double radius = 10 + random.nextInt(40);
+            double radius = 10.0 + random.nextInt(40);
             Point location = new Point(radius + random.nextInt((int) (world.getWidth() - 2 * radius)),
                     radius + random.nextInt((int) (world.getHeight() - 2 * radius)));
             BoundedBall ball = new BoundedBall(location, radius, colors[random.nextInt(colors.length)]);

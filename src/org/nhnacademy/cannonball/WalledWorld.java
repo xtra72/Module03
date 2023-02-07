@@ -18,22 +18,35 @@ public class WalledWorld extends MovableWorld {
     public void next() {
         super.next();
 
-        for(Ball ball : balls) {
-            if(ball instanceof BoundedBall) {
-                if (leftWall.isCollision(((BoundedBall)ball).getRegion()) || rightWall.isCollision(((BoundedBall)ball).getRegion())) {
-                    ((BoundedBall)ball).turnX();
+        for(Shape shape : shapes) {
+            if(shape instanceof BoundedBall) {
+                if (leftWall.isCollision(((BoundedBall)shape).getRegion()) || rightWall.isCollision(((BoundedBall)shape).getRegion())) {
+                    ((BoundedBall)shape).turnX();
                 }
 
-                if (topWall.isCollision(((BoundedBall)ball).getRegion()) || bottomWall.isCollision(((BoundedBall)ball).getRegion())) {
-                    ((BoundedBall)ball).turnY();
+                if (topWall.isCollision(((BoundedBall)shape).getRegion()) || bottomWall.isCollision(((BoundedBall)shape).getRegion())) {
+                    ((BoundedBall)shape).turnY();
                 }
+
+                shapes.stream().filter(x -> x != shape)
+                        .filter(x -> x.getRegion().isCollision(shape.getRegion()))
+                        .forEach(x -> ((BoundedBall) shape).turnX());
             }
 
-            balls.stream().filter(x -> x != ball)
-                    .filter(x -> x.getRegion().isCollision(ball.getRegion()))
-                    .forEach(x -> {
-                        ((BoundedBall)ball).turnX();
-                    });
+            if (shape instanceof BoundedBox) {
+                if (leftWall.isCollision(((BoundedBox) shape).getRegion())
+                        || rightWall.isCollision(((BoundedBox) shape).getRegion())) {
+                    ((BoundedBox) shape).turnX();
+                }
+
+                if (topWall.isCollision(((BoundedBox)shape).getRegion()) || bottomWall.isCollision(((BoundedBox)shape).getRegion())) {
+                    ((BoundedBox)shape).turnY();
+                }
+
+                shapes.stream().filter(x -> x != shape)
+                        .filter(x -> x.getRegion().isCollision(shape.getRegion()))
+                        .forEach(x -> ((BoundedBox) shape).turnX());
+            }
         }
     }
 }
