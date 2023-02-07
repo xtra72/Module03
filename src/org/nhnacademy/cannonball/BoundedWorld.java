@@ -5,6 +5,7 @@ public class BoundedWorld extends MovableWorld {
         super(width, height);
     }
 
+    @Override
     public void add(Shape shape) {
         if (shape instanceof Boundable ) {
             ((Boundable)shape).setBounds(new Region(0, 0, getWidth(), getHeight()));

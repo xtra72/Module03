@@ -15,6 +15,10 @@ public class Box extends Shape {
         this.color = color;
     }
 
+    public Box(Point location, double width, double height) {
+        this(location, width, height, Color.BLACK);
+    }
+
     public double getX() {
         return  location.getX();
     }
