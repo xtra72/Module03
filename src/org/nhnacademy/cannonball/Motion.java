@@ -6,24 +6,12 @@ public class Motion {
     double dx;
     double dy;
 
+
     public Motion() {
         velocity = 0;
         angle = 0;
         dx = 0;
         dy = 0;
-    }
-
-    public Motion(double velocity, double angle) {
-        this.velocity = velocity;
-        this.angle = angle;
-        updateDXDY();
-    }
-
-    public Motion(Motion motion) {
-        velocity = motion.getVelocity();
-        angle = motion.getAngle();
-        dx = motion.getDX();
-        dy = motion.getDY();
     }
 
     public void add(Motion motion) {
@@ -97,5 +85,46 @@ public class Motion {
     public void updateVelocityAndAngle() {
         velocity = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
         angle = Math.toDegrees(Math.asin(dy / velocity));
+    }
+
+
+    private Motion(MotionBuilderDXDY builder) {
+        this.dx = builder.dx;
+        this.dy = builder.dy;
+        updateVelocityAndAngle();
+    }
+
+    private Motion(MotionBuilderVA builder) {
+        this.angle = builder.angle;
+        this.velocity= builder.velocity;
+        updateDXDY();
+    }
+
+    public static class MotionBuilderDXDY {
+        double dx;
+        double dy;
+
+        public MotionBuilderDXDY(double dx, double dy) {
+            this.dx = dx;
+            this.dy = dy;
+        }
+
+        public Motion build() {
+            return new Motion(this);
+        }
+    }
+
+    public static class MotionBuilderVA {
+        double velocity;
+        double angle;
+
+        public MotionBuilderVA(double velocity, double angle) {
+            this.velocity = velocity;
+            this.angle = angle;
+        }
+
+        public Motion build() {
+            return new Motion(this);
+        }
     }
 }

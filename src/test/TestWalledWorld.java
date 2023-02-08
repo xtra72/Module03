@@ -17,10 +17,7 @@ public class TestWalledWorld {
         double radius = 20.0;
         Point location = new Point(30, 30);
         BoundedBall ball = new BoundedBall(location, radius, colors[random.nextInt(colors.length)]);
-        Motion motion = new Motion();
-        motion.setVelocity(20);
-        motion.setAngle(40);
-        ball.setMotion(motion);
+        ball.setMotion(new Motion.MotionBuilderVA(20, 40).build());
         world.add(ball);
 
         world.setVisible(true);

@@ -6,7 +6,7 @@ public class WalledWorld extends MovableWorld {
 
     public WalledWorld(int width, int height) {
         super(width, height);
-        gravity = new Motion(9.8 / 10, -90);
+        gravity = new Motion.MotionBuilderVA(9.8 / 10, -90).build();
         add(new Box(new Point(-width * 0.5, height * 0.5), width, 3.0 * height));
         add(new Box(new Point(width * 1.5, height * 0.5), width, 3.0 * height));
         add(new Box(new Point(width * 0.5, height * 1.5), 3.0 * width, height));

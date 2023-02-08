@@ -20,14 +20,6 @@ public class Box extends Shape {
         this(location, width, height, Color.BLACK);
     }
 
-    public double getX() {
-        return  location.getX();
-    }
-
-    public double getY() {
-        return  location.getY();
-    }
-
     public double getWidth() {
         return  width;
     }

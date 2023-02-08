@@ -18,11 +18,8 @@ public class TestMovableWorld {
             MovableBall ball = new MovableBall(new Point(radius + random.nextInt((int) (world.getWidth() - 2 * radius)),
                     radius + random.nextInt((int) (world.getHeight() - 2 * radius))),
                     radius, Color.BLACK);
-            Motion motion = new Motion();
-            motion.setVelocity(10.0 + random.nextInt(40));
-            motion.setAngle(random.nextInt(90));
-
-            ball.setMotion(motion);
+            ball.setMotion(new Motion.MotionBuilderVA(10.0 + random.nextInt(40),
+                    random.nextInt(90)).build());
             world.add(ball);
         }
 

@@ -17,11 +17,14 @@ public class MovableWorld extends World {
     }
 
     public void next() {
-        for(Shape shape : shapes) {
-            if (shape instanceof Movable) {
-                ((Movable)shape).next();
-            }
-        }
+        shapes.stream()
+                .filter(Movable.class::isInstance)
+                .forEach(shape -> ((Movable)shape).next());
+    //     for(Shape shape : shapes) {
+    //         if (shape instanceof Movable) {
+    //             ((Movable)shape).next();
+    //         }
+    //     }
     }
 
     public void run(long seconds) throws InterruptedException {

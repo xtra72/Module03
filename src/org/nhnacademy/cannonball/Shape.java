@@ -10,8 +10,14 @@ abstract class Shape {
         this.location = location;
     }
 
-    abstract double getX();
-    abstract double getY();
+    public double getX() {
+        return  location.getX();
+    }
+
+    public double getY() {
+        return  location.getY();
+    }
+
     abstract Region getRegion();
     abstract void draw(Graphics graphics);
     abstract void draw(Graphics graphics, UnaryOperator<Point>translate);

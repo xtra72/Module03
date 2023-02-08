@@ -15,14 +15,6 @@ public class Ball extends Shape {
         this.color = color;
     }
 
-    public double getX() {
-        return  location.getX();
-    }
-
-    public double getY() {
-        return  location.getY();
-    }
-
     public double getRadius() {
         return  radius;
     }

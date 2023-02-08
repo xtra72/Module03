@@ -18,10 +18,7 @@ public class TestBoundedWorld {
             Point location = new Point(radius + random.nextInt((int) (world.getWidth() - 2 * radius)),
                     radius + random.nextInt((int) (world.getHeight() - 2 * radius)));
             BoundedBall ball = new BoundedBall(location, radius, colors[random.nextInt(colors.length)]);
-            Motion motion = new Motion();
-            motion.setVelocity(20);
-            motion.setAngle(40);
-            ball.setMotion(motion);
+            ball.setMotion(new Motion.MotionBuilderVA(20, 40).build());
             world.add(ball);
         }
         world.setVisible(true);
